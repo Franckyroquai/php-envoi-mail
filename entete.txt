@@ -1,0 +1,36 @@
+=============== Entête mail PHP ==============
+
+De : "Franck Monge" <franckyroquai@gmail.com>
+
+A : "Franck Monge" <franckyroquai@gmail.com>
+
+Reply-To : "Franck Monge" <franckyroquai@gmail.com>
+
+X-Priority : 4
+
+ <?php
+    echo"<h1>Envoi de mails en PHP</h1>";
+
+    $destinataire = "franckyroquai@gmail.com";
+    $titre = "Un message de mon application d'envoi de mails N°2 ;)";
+    $message = "Bonjour Franck
+
+    Ceci est un mail de confirmation de ton inscription
+    au club des champions !
+
+    Merci, nous sommes honorés";
+
+    // $entete = "From : \"Franck Monge\" <franckyroquai@gmail.com>\r\n";
+    // $entete .="Reply-To : \"Franck Monge\" <franckyroquai@gmail.com>\r\n";
+    // $entete .= "X-Priority : 4\r\n";
+
+    $entete["From"] = "\"Franck Monge\" <franckyroquai@gmail.com>";
+    $entete["Reply-To"] = "\"Franck Monge\" <franckyroquai@gmail.com>";
+    $entete["X-Priority"] = "3";
+
+
+    $envoi = mail($destinataire,$titre, $message, $entete);
+
+    var_dump($envoi);
+
+    ?>
