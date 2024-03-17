@@ -1,4 +1,58 @@
-.entete {
-    display: flex;
-    flex-direction: row;
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(35, 96, 54);
+    padding-top: 60px;
+    text-shadow: 3px 3px 3px rgb(35, 96, 54);
+}
+
+.container {
+    background-color: beige;
+    margin-top: 30px;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 10px;
+    text-shadow: 1px 2px 3px gray;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.container label {
+    font-size: 25px;
+}
+
+.container input, .container textarea {
+    border: 1px solid gray;
+}
+
+.container input[type="submit"] {
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+span {
+    color: blue;
+    margin: 5px;
+}
+
+p.comment-obligatoire{
+    color: blue;
+    font-size: 25px;
+    font-style: italic;
+}
+
+p.comment-error {
+    color: rgb(89, 5, 5);
+    font-size: 25px;
+    font-style: italic;
+}
+
+p.comment-success {
+    color: rgb(63, 105, 0);
+    font-size: 25px;
+    font-style: italic;
 }
