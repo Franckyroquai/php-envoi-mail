@@ -1,8 +1,29 @@
 <?php
 require("lib/functions.php");
 $errorDes = $errorExp = $errorObj = $errorMg = "";
-$valueDes = $valueExp = $valueObj = $valueMg = "";
+$valueDes = $valueExp = $valueObj = $valueMg = $valueEnv = "";
+$valid_data = false;
 check();
+if ($valid_data) {
+    //envoi du mail
+
+    $destinataire = $valueDes;
+    $objet = $valueObj;
+    $message = $valueMg;
+    $entete['From'] = "\"Expéditeur\" <".$valueExp.">"; 
+    $entete['Reply-To'] = "\"Expéditeur\" <".$valueExp.">"; 
+    $entete['X-Priority'] = "1";
+    $envoi = mail($destinataire, $objet, $message, $entete);
+    if ($envoi) {
+        $valueEnv = "Mail envoyé avec succès ! Merci et à très bientôt !";
+        $errorDes = $errorExp = $errorObj = $errorMg = "";
+        $valueDes = $valueExp = $valueObj = $valueMg = "";
+        //mail envoyé au serveur correctement
+    }else {
+        //mail non envoyé au serveur
+        $valueEnv = "Le message n'a pû être envoyé, Merci de réessayer !";
+    }
+}
 
 
 ?>
@@ -31,30 +52,30 @@ check();
             <div class="form-group col-md-6" >
                 <label for="">Expéditeur <span>*</span> </label>
                 <input type="email" class="form-control" name="inputEmailExpediteur" 
-                placeholder="Entrez votre Email !" >
+                 value="<?php echo $valueExp ?>" placeholder="Entrez votre Email !" >
                 <p class="comment-error"><?php echo $errorExp ?></p>
             </div>
             <div class="form-group col-md-6" >
                 <label for="">Destinataire <span>*</span> </label>
                 <input type="email" class="form-control" name="inputEmailDestinataire" 
-                placeholder="Entrez l'Email du destinataire !" >
+                value="<?php echo $valueDes ?>" placeholder="Entrez l'Email du destinataire !" >
                 <p class="comment-error"><?php echo $errorDes ?></p>
             </div>
         </div>
         <div class="form-row" >
             <label for="">Objet <span>*</span></label>
             <input type="text" class="form-control" placeholder="Entrez l'objet de votre message !"
-            name="InputObjet">
+            name="InputObjet" value="<?php echo $valueObj ?>" >
             <p class="comment-error"><?php echo $errorObj ?></p>
         </div>
         <div class="form-row" >
             <label for="">Message <span>*</span></label>
-            <textarea class="form-control" name="InputMessage" rows="8" cols="80" ></textarea>
+            <textarea class="form-control" name="InputMessage" rows="8" cols="80" ><?php echo $valueMg ?></textarea>
             <p class="comment-error"><?php echo $errorMg ?></p>
         </div>
         <p class="comment-obligatoire" ><span>*</span> Ces champs sont obligatoires !</p>
         <input type="submit" class="btn btn-lg btn-success btn-block" value="Envoyer" >
-        <p class="comment-success"></p>
+        <p class="comment-success"><?php echo $valueEnv ?></p>
     </form>
 
 
