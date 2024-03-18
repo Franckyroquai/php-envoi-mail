@@ -1,3 +1,11 @@
+<?php
+require("lib/functions.php");
+$errorDes = $errorExp = $errorObj = $errorMg = "";
+$valueDes = $valueExp = $valueObj = $valueMg = "";
+check();
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr" >
 <head>
@@ -24,25 +32,25 @@
                 <label for="">Expéditeur <span>*</span> </label>
                 <input type="email" class="form-control" name="inputEmailExpediteur" 
                 placeholder="Entrez votre Email !" >
-                <p class="comment-error"></p>
+                <p class="comment-error"><?php echo $errorExp ?></p>
             </div>
             <div class="form-group col-md-6" >
                 <label for="">Destinataire <span>*</span> </label>
                 <input type="email" class="form-control" name="inputEmailDestinataire" 
                 placeholder="Entrez l'Email du destinataire !" >
-                <p class="comment-error"></p>
+                <p class="comment-error"><?php echo $errorDes ?></p>
             </div>
         </div>
         <div class="form-row" >
             <label for="">Objet <span>*</span></label>
             <input type="text" class="form-control" placeholder="Entrez l'objet de votre message !"
             name="InputObjet">
-            <p class="comment-error"></p>
+            <p class="comment-error"><?php echo $errorObj ?></p>
         </div>
         <div class="form-row" >
             <label for="">Message <span>*</span></label>
-            <textarea class="form-control" name="InputMessage"></textarea>
-            <p class="comment-error"></p>
+            <textarea class="form-control" name="InputMessage" rows="8" cols="80" ></textarea>
+            <p class="comment-error"><?php echo $errorMg ?></p>
         </div>
         <p class="comment-obligatoire" ><span>*</span> Ces champs sont obligatoires !</p>
         <input type="submit" class="btn btn-lg btn-success btn-block" value="Envoyer" >
